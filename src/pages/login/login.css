@@ -57,6 +57,7 @@ body {
 .login-form label {
   margin-bottom: 4px;
   font-weight: bold;
+  color: #1e1e1e;
 }
 
 .login-form input {

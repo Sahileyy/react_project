@@ -7,7 +7,7 @@ import api from '../../axios';
 
 axios.defaults.withCredentials = true
 
-const Login = () => {
+const Login = ({apiEndPoint,apiDirection}) => {
 
 const navigate = useNavigate()
 
@@ -28,18 +28,27 @@ const handleSubmit = async e =>{
   e.preventDefault();
 
   try{
-    const res = await api.post('/user/login',form )
+    const res = await api.post(apiEndPoint,form )
     setMessage(res.data)
      console.log('Login response:', res.data);
 
-    if(res.data === 'USER LOGGED IN'){
+    if(res.data === 'USER LOGGED IN')   
+   
+    {
       // console.log(res.data);
       
-      navigate('/')
+      navigate('/home')
     }
+       else if(res.data === "ADMIN LOGGED IN") 
+    {
+      // console.log(res.data);
+      
+      navigate('/admin')
+    }
+
   }
   catch(err){
-    setMessage(err.response?.data || 'REGISTRATION FAILED')
+    setMessage(err.response?.data || 'LOGIN FAILED')
   }
 }
 
@@ -60,7 +69,7 @@ const handleSubmit = async e =>{
 
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password"  onChange={handleChange} required />
-            <p className="text-red-600 font-light text-center text-xs italic">{message}</p>
+            <p className=" font-light text-center text-xs italic">{message}</p>
           <button type="submit">Login</button>
         </form>
 
