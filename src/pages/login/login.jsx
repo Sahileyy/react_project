@@ -37,7 +37,7 @@ const handleSubmit = async e =>{
     {
       // console.log(res.data);
       
-      navigate('/home')
+      navigate('/')
     }
        else if(res.data === "ADMIN LOGGED IN") 
     {

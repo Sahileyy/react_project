@@ -60,12 +60,20 @@ body {
   color: #1e1e1e;
 }
 
+login-form input:focus,
+.login-form input:hover {
+  border-color: var(--yellow);
+  background-color: #f0f8f4; /* light green tint */
+  outline: none; /* removes default blue outline */
+}
+
 .login-form input {
   padding: 8px;
   margin-bottom: 12px;
-  border: 1.5px solid var(--yellow);
+  border: 2px solid #ccc; /* subtle default border */
   border-radius: 4px;
   font-size: 1rem;
+  transition: border-color 0.3s, background-color 0.3s;
 }
 
 .login-form button {

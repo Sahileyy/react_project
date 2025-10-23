@@ -12,19 +12,19 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
+    <nav className="navbar w-full fixed h-12 z-50" >
+      <div className="navbar-left ">
         <img src={menu} alt="Menu" className="icon menu-icon" />
         <img src={logo} alt="Logo" className="logo" />
       </div>
 
-      <div className="navbar-center">
+      <div className="navbar-center border-2 rounded-lg">
         <input
           type="text"
           placeholder="Search..."
           className="search-input"
         />
-        <img src={search} alt="Search" className="icon search-icon" />
+        <img src={search} alt="Search" className="icon search-icon w-2 h-2" />
       </div>
 
       <div className="navbar-right">

@@ -9,7 +9,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--white);
 }
 
 .register-container {
@@ -23,20 +22,25 @@ body {
 .register-box {
   border: 2px solid var(--yellow);
   padding: 2rem;
-  width: 320px;
-  background-color: var(--white);
+  width: 360px;
   color: var(--red);
-   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  margin-top:80px;
+  margin-bottom: 29px;
+}
+
+.logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .logo-img {
-    display: flex;
-    padding-left: 30%;  
-
-   height: 32px;
-  margin-right: 10px;
-
+  padding-right: 30%;
+  height: 32px;
 }
 
 .register-form {
@@ -47,27 +51,54 @@ body {
 .register-form label {
   margin-bottom: 4px;
   font-weight: bold;
+  color: var(--black);
 }
 
 .register-form input {
   padding: 8px;
   margin-bottom: 12px;
-  border: 1.5px solid var(--yellow);
+  border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
-  color: var(--black);
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.register-form input:focus,
+.register-form input:hover {
+  border-color: var(--yellow);
+  background-color: #f0f8f4;
   outline: none;
 }
 
 .register-form button {
-  background-color: var(--yellow);
-  color: var(--red);
+  background-color:#98b880;
+  color: var(--black);
   font-weight: bold;
   border: none;
   padding: 10px;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.register-form button:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 
+.font-light {
+  font-weight: 300;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.italic {
+  font-style: italic;
+}

@@ -42,19 +42,19 @@ const AdminProduct = () => {
   };
 
   return (
-    <div className="p-6 font-sans">
-      <h2 className="text-2xl mb-4 text-gray-800 font-bold text-center">
+    <div className="p-6 font-sans bg-gray-300">
+      <h2 className="text-2xl mb-4 text-gray-800 font-bold text-center pt-10">
         PRODUCTS
       </h2>
 
       <button
         onClick={() => navigate("/admin/addProduct")}
-        className="mb-4 px-4 py-2 bg-[#98b880] text-white rounded hover:bg-green-700 transition-colors"
+        className="font-bold mb-4 px-4 py-2 bg-[#98b880] text-white rounded hover:bg-green-700 transition-colors"
       >
         + Add Product
       </button>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto bg-slate-100">
         <table className="w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-[#98b880] text-white">
@@ -73,7 +73,7 @@ const AdminProduct = () => {
                 
                 <tr
                   key={prod._id}
-                  className="hover:bg-gray-100 transition-colors text-gray-700"
+                  className="hover:bg-slate-200 transition-colors text-gray-700"
                 >
                   <td className="p-2 border text-center">{prod._id}</td>
                   <td className="p-2 border">{prod.product_name}</td>
