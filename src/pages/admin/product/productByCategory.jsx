@@ -1,63 +1,76 @@
-import React from 'react';
-import './ProductByCategory.css'; 
-import skiP1 from '../../../assets/skicategory/skiP1.webp'
-import skiP2 from '../../../assets/skicategory/skiP2.webp'
-import skiP3 from '../../../assets/skicategory/skip3.webp'
-import skivideo from '../../../assets/bg-video/skivideo.mp4'
-
-
-
-const dummyProducts = [
-  {
-    _id: 1,
-    name: 'Ski Board',
-    image: skiP1,
-    description: 'Durable and lightweight ski board for flying.',
-    price: 5999,
-  },
-  {
-    _id: 2,
-    name: 'Racket',
-    image: skiP2,
-    description: 'High performance racket for professionals.',
-    price: 2999,
-  },
-  {
-    _id: 3,
-    name: 'Tennis Bag',
-    image:skiP3,
-    description: 'Elegant white duffle bag for court essentials.',
-    price: 1889,
-  },
-];
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ProductByCategory = () => {
-  return (
-    <>
-      <div className="video-section">
-  <video className="bg-video" autoPlay loop muted>
-    <source src={skivideo} type="video/mp4" />
-  </video>
-  <div className="video-overlay"></div>
-      <h2 className="section-title">SKI</h2>
+  const { id } = useParams(); 
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [categoryName, setCategoryName] = useState(id); 
 
-</div>
-    <div className="product-category-page">
-    <div className="product-grid">
-        {dummyProducts.map((product) => (
-          <div className="product-card" key={product._id}>
-            <img src={product.image} alt={product.name} className="product-image" />
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-description">{product.description}</p>
-            <div className="product-price">₹{product.price}</div>
-          </div>
-        ))}
-      </div>
-      </div>
-    </>
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get(
+          `/product/category/${id}`
+        );
+
+       
+        setProducts(Array.isArray(res.data) ? res.data : []);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setProducts([]); 
+      }
+    };
+
+    fetchProducts();
+  }, [id]);
+
+  return (
+    <div className="w-full min-h-screen bg-gray-50 px-6 md:px-12 lg:px-20 py-16">
+     
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-8 text-blue-700 font-semibold hover:underline"
+      >
+        ← Back
+      </button>
+
     
+      <h2 className="text-4xl font-extrabold text-center mb-10 text-gray-800 uppercase">
+        {categoryName}
+      </h2>
+
+      {/* Product Grid */}
+      {products.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg">
+          No products available in this category.
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {products.map((p) => (
+            <div
+              key={p._id}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 flex flex-col items-center text-center"
+            >
+              <img
+                src={p.image}
+                alt={p.product_name}
+                className="w-48 h-48 object-cover rounded-xl mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-800">
+                {p.product_name}
+              </h3>
+              <p className="text-gray-500 text-sm mt-2">{p.description}</p>
+              <div className="mt-4 text-lg font-bold text-blue-700">
+                ${p.price}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
 export default ProductByCategory;
-

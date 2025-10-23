@@ -34,7 +34,7 @@ const App = () => {
      <Route path="/admin/adminProduct" element={<AdminProduct/>} />
      <Route path="/admin/adminPutProduct/:id" element={<AdminPutProduct/>} />
      <Route path="/admin/adminPannel" element={<ListUsers/>} />
-     <Route path="/admin/product/category/:id" element={<ProductByCategory/>} />
+     <Route path="/public/product/category/:id" element={<ProductByCategory/>} />
 
 
 
