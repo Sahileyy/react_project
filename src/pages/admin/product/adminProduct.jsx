@@ -42,7 +42,7 @@ const AdminProduct = () => {
   };
 
   return (
-    <div className="p-6 font-sans bg-gray-300">
+    <div className="p-6 font-sans bg-white">
       <h2 className="text-2xl mb-4 text-gray-800 font-bold text-center pt-10">
         PRODUCTS
       </h2>
@@ -77,7 +77,7 @@ const AdminProduct = () => {
                 >
                   <td className="p-2 border text-center">{prod._id}</td>
                   <td className="p-2 border">{prod.product_name}</td>
-                  <td className="p-2 border">₹{prod.price}</td>
+                  <td className="p-2 border">${prod.price}</td>
                   <td className="p-2 border">{prod.category.name}</td>
                   <td className="p-2 border text-center">
                     {prod.image ? (
@@ -116,6 +116,8 @@ const AdminProduct = () => {
           </tbody>
         </table>
       </div>
+        <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline transition-transform duration-300 hover:scale-105" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
+      
     </div>
   );
 };

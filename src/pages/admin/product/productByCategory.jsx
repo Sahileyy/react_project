@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../axios.jsx";
+import Navbar from "../../../components/navbar";
 
 const ProductByCategory = () => {
   const { id } = useParams(); 
@@ -11,12 +12,13 @@ const ProductByCategory = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(
-          `/product/category/${id}`
+        const res = await api.get(
+          `/public/product/category/${id}`
         );
 
-       
-        setProducts(Array.isArray(res.data) ? res.data : []);
+        setCategoryName(res.data.category_name)
+        
+        setProducts(Array.isArray(res.data.products) ? res.data.products : []);
       } catch (err) {
         console.error("Error fetching products:", err);
         setProducts([]); 
@@ -27,13 +29,15 @@ const ProductByCategory = () => {
   }, [id]);
 
   return (
+    <>
+    <Navbar/>
     <div className="w-full min-h-screen bg-gray-50 px-6 md:px-12 lg:px-20 py-16">
      
       <button
         onClick={() => navigate(-1)}
-        className="mb-8 text-blue-700 font-semibold hover:underline"
+        className="mb-8 w-28 rounded-md text-black font-sans font-extrabold  hover:text-green-400 "
       >
-        ← Back
+        HOME
       </button>
 
     
@@ -51,10 +55,11 @@ const ProductByCategory = () => {
           {products.map((p) => (
             <div
               key={p._id}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 flex flex-col items-center text-center"
+              onClick={()=>{navigate(`/product/${p._id}`)}}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105 p-6 flex flex-col items-center text-center"
             >
               <img
-                src={p.image}
+                src={"http://localhost:3030"+p.image}
                 alt={p.product_name}
                 className="w-48 h-48 object-cover rounded-xl mb-4"
               />
@@ -62,7 +67,7 @@ const ProductByCategory = () => {
                 {p.product_name}
               </h3>
               <p className="text-gray-500 text-sm mt-2">{p.description}</p>
-              <div className="mt-4 text-lg font-bold text-blue-700">
+              <div className="mt-4 text-lg font-bold text-green-500">
                 ${p.price}
               </div>
             </div>
@@ -70,6 +75,7 @@ const ProductByCategory = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

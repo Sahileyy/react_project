@@ -1,6 +1,7 @@
-import React from "react";
-import Navbar from "../../components/navbar";
+import React, { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar.jsx";
 import { useNavigate } from "react-router-dom";
+import HomeProductCards from '../../components/HomeProductCards.jsx'
 
 // Images
 import skicat1 from "../../assets/ski/skicat1.jpg";
@@ -9,15 +10,37 @@ import shoe1 from "../../assets/ski/shoe1.jpg";
 import tennis1 from "../../assets/ski/tennis1.jpg";
 import asses1 from "../../assets/ski/asses1.jpg";
 
-import skip1 from "../../assets/skicategory/skiP1.webp";
-import racket1 from "../../assets/tenniscategory/tenniscat1.webp";
-import bag1 from "../../assets/tenniscategory/tenniscat3.webp";
+
 
 import banner1 from "../../assets/banners/banner 6.avif";
 import video2 from "../../assets/bg-video/video2.mp4";
+import ProductCard2 from "../../components/ProductCard2.jsx";
+import FooterSection from "../../components/Footer.jsx";
+import api from "../../axios.jsx";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [products,setProducts] = useState([])
+console.log("hi");
+
+  useEffect(()=>{
+    async function fetchProducts() {
+      try{
+        const res = await api.get('/public/product');
+        setProducts(res.data);
+        console.log(res.data);
+        
+      }
+      catch (err){
+        console.log("error fetching products",err);
+        res.json({message:"error fetching products"})
+        
+      }
+      
+    }
+    fetchProducts()
+  },[])
+
 
   const categories = [
     { id: "68f8e9c2791b73aebb80ac00", name: "SKI", img: skicat1 },
@@ -25,30 +48,6 @@ const HomePage = () => {
     { id: "68f8ee44791b73aebb80ac6a", name: "SHOES", img: shoe1 },
     { id: "68f8eb27791b73aebb80ac33", name: "TENNIS", img: tennis1 },
     { id: "68f8ec0f791b73aebb80ac37", name: "ACCESSORIES", img: asses1 },
-  ];
-
-  const products = [
-    {
-      id: 1,
-      name: "Ski Board",
-      image: skip1,
-      description: "Durable and lightweight ski board for flying.",
-      price: 5999,
-    },
-    {
-      _id: 2,
-      name: "Racket",
-      image: racket1,
-      description: "For high performance.",
-      price: 2999,
-    },
-    {
-      _id: 3,
-      name: "Duffle Bag",
-      image: bag1,
-      description: "Elegant white perfect for grass-court.",
-      price: 1889,
-    },
   ];
 
   const handleCatClick = (category) => {
@@ -106,39 +105,20 @@ const HomePage = () => {
           <h2 className="text-3xl font-extrabold text-center mb-10 text-gray-800">
             Featured Products
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-            {products.map((product) => (
-              <div
-                key={product._id}
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center"
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-48 h-48 object-cover rounded-xl mb-4"
-                />
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {product.name}
-                </h3>
-                <p className="text-gray-500 text-sm mt-2 text-center">
-                  {product.description}
-                </p>
-                <div className="mt-4 text-lg font-bold text-blue-700">
-                  ${product.price}
-                </div>
-              </div>
-            ))}
-          </div>
+          <HomeProductCards products={products} />
+    
         </section>
 
-        {/* Banner */}
-        <div className="w-full">
+        
+        <div className="w-full  ">
           <img
             src={banner1}
             alt="banner"
-            className="w-full object-cover rounded-none"
+            className="w-full object-cover rounded-none py-10"
           />
+             <ProductCard2 products={products}/>
         </div>
+        <FooterSection/>
       </div>
     </>
   );

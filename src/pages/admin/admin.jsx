@@ -9,20 +9,17 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-[#f9f9f9] flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-[#919191f0] text-white flex flex-col p-4">
+      <aside className="w-64 bg-[#98b880] text-white flex flex-col p-4">
         <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
         <nav className="flex flex-col space-y-3">
-          <button className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition font-bold" onClick={()=> Navigate ('/admin/category')}>
+          <button className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition-transform duration-300 hover:scale-105 font-bold" onClick={()=> Navigate ('/admin/category')}>
              Manage Category
           </button>
-          <button onClick={()=> Navigate('/admin/adminProduct')} className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition font-bold">
+          <button onClick={()=> Navigate('/admin/adminProduct')} className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition-transform duration-300 hover:scale-105 font-bold">
              Manage Product
           </button>
-          <button onClick={()=>{Navigate('/admin/adminPannel')}} className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition font-bold">
+          <button onClick={()=>{Navigate('/admin/adminPannel')}} className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition-transform duration-300 hover:scale-105 font-bold">
              Manage Users
-          </button>
-          <button className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition font-bold">
-             Manage Orders
           </button>
         </nav>
       </aside>
@@ -34,28 +31,32 @@ const AdminDashboard = () => {
         </h1>
 
         <div className="grid grid-cols-2 gap-6">
-          <div className="bg-[#919191f0] p-6 rounded-lg shadow hover:shadow-lg transition"   onClick={() => Navigate('/admin/createCategory')} >
+          <div className="bg-[#98b880] p-6 rounded-lg shadow hover:shadow-lg 
+          transition-transform duration-300 hover:scale-105"   onClick={() => Navigate('/admin/createCategory')} >
             <h2 className="text-xl font-semibold mb-2 text-white">Create Category</h2>
             <p className="text-white text-sm">
               Add new categories for products.
             </p>
           </div>
 
-          <div className="bg-[#919191f0] p-6 rounded-lg shadow hover:shadow-lg transition"  onClick={() => Navigate('/admin/addProduct')} >
+          <div className="bg-[#98b880] p-6 rounded-lg shadow hover:shadow-lg 
+          transition-transform duration-300 hover:scale-105"  onClick={() => Navigate('/admin/addProduct')} >
             <h2 className="text-xl font-semibold mb-2 text-white">Add Product</h2>
             <p className="text-white text-sm">
               Upload and manage products.
             </p>
           </div>
 
-          <div onClick={()=>{Navigate('/admin/adminPannel')}} className="bg-[#919191f0] p-6 rounded-lg shadow hover:shadow-lg transition">
+          <div onClick={()=>{Navigate('/admin/adminPannel')}} className="bg-[#98b880] p-6 rounded-lg shadow hover:shadow-lg 
+          transition-transform duration-300 hover:scale-105">
             <h2 className="text-xl font-semibold mb-2 text-white">Manage Users</h2>
             <p className="text-white text-sm">
               View and update user information.
             </p>
           </div>
 
-          <div className="bg-[#919191f0] p-6 rounded-lg shadow hover:shadow-lg transition">
+          <div onClick={()=>{Navigate('/admin/orders')}} className="bg-[#98b880] p-6 rounded-lg shadow hover:shadow-lg 
+          transition-transform duration-300 hover:scale-105">
             <h2 className="text-xl font-semibold mb-2 text-white">Manage Orders</h2>
             <p className="text-white text-sm">
               Track and process customer orders.

@@ -1,41 +1,36 @@
-import React, { useEffect,useState } from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../axios";
 
-
 export const EditCategory = () => {
-      const { id } = useParams();
-    const navigate = useNavigate();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    async function fetchCategory(){
-        try{
-            const response = await api.get(`/admin/category/${id}`)
-            setName(response.data.name)
-            setDescription(response.data.description || "")
-        }
-        catch(err){
-            console.log(err);
-            alert("enter fetching category data")
-            
-        }
+    async function fetchCategory() {
+      try {
+        const response = await api.get(`/admin/category/${id}`);
+        setName(response.data.name);
+        setDescription(response.data.description || "");
+      } catch (err) {
+        console.log(err);
+        alert("enter fetching category data");
+      }
     }
-    fetchCategory()
-  },[id])
+    fetchCategory();
+  }, [id]);
 
-
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if(!name.trim()){
-        alert('Category name is required')
-        return;
+
+    if (!name.trim()) {
+      alert("Category name is required");
+      return;
     }
-     try {
+    try {
       await api.put(`/admin/category/${id}`, { name, description });
       alert("Category updated successfully!");
       navigate("/admin/category");
@@ -43,12 +38,10 @@ export const EditCategory = () => {
       console.error(err);
       alert("Error updating category");
     }
-  }
-  
+  };
 
   return (
     <div className="min-h-screen flex bg-gray-50">
-   
       <aside className="w-64 bg-[#7a7a7a] text-white flex flex-col p-6">
         <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
         <nav className="flex flex-col space-y-3">
@@ -67,7 +60,6 @@ export const EditCategory = () => {
         </nav>
       </aside>
 
-   
       <main className="flex-1 p-10">
         <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">

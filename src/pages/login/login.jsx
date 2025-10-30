@@ -29,23 +29,24 @@ const handleSubmit = async e =>{
 
   try{
     const res = await api.post(apiEndPoint,form )
-    setMessage(res.data)
-     console.log('Login response:', res.data);
+   console.log("login response:",res.data);
 
-    if(res.data === 'USER LOGGED IN')   
-   
-    {
-      // console.log(res.data);
-      
-      navigate('/')
-    }
-       else if(res.data === "ADMIN LOGGED IN") 
-    {
-      // console.log(res.data);
-      
+   if(res.data && res.data.user){
+    localStorage.setItem("user",JSON.stringify(res.data.user))
+    setMessage(res.data.message)
+
+    if (res.data.user.role === "admin"){
       navigate('/admin')
     }
-
+    if(res.data.user.role === "user"){
+      navigate('/')
+    }
+    else{
+      setMessage(res.data.message || "login failed")
+    }
+   }
+   
+   
   }
   catch(err){
     setMessage(err.response?.data || 'LOGIN FAILED')
@@ -72,6 +73,7 @@ const handleSubmit = async e =>{
             <p className=" font-light text-center text-xs italic">{message}</p>
           <button type="submit">Login</button>
         </form>
+        <div className='text-center text-sm text-red-600 py-3 ' ><p className='cursor-pointer hover:underline' onClick={()=>{navigate('/register')}}>Don't have an account?</p></div>
 
         <div className="home-link">
           <a href="/">← Back to Home</a>

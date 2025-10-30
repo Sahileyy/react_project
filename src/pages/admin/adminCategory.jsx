@@ -34,7 +34,7 @@ export const AdminCategory = () => {
   };
 
   return (
-    <div className="p-6 font-sans">
+    <div className="p-6 font-sans bg-white w-full h-screen">
       <h2 className="text-2xl  mb-4 text-gray-800 font-bold text-center ">CATEGORIES</h2>
 
       {/* <button
@@ -93,6 +93,8 @@ export const AdminCategory = () => {
           </tbody>
         </table>
       </div>
+        <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline transition-transform duration-300 hover:scale-105" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
+      
     </div>
   );
 };

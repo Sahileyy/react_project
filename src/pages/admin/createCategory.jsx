@@ -27,8 +27,8 @@ export const CreateCategory = () => {
 
   return (
     <div className="min-h-screen flex bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-64 bg-[#7a7a7a] text-white flex flex-col p-6">
+    
+      {/* <aside className="w-64 bg-[#7a7a7a] text-white flex flex-col p-6">
         <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
         <nav className="flex flex-col space-y-3">
           <button
@@ -47,9 +47,9 @@ export const CreateCategory = () => {
             Manage Orders
           </button>
         </nav>
-      </aside>
+      </aside> */}
 
-      {/* Main Content */}
+      
       <main className="flex-1 p-10">
         <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
@@ -90,6 +90,8 @@ export const CreateCategory = () => {
             </button>
           </form>
         </div>
+        <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
+
       </main>
     </div>
   );
