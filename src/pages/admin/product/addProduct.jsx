@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import api from "../../../axios";
 import { useNavigate } from "react-router-dom";
+import { AdminNavbar } from "../../../components/navbar/AdminNavbar";
+import { SidebarAdmin } from "../../../components/sidebars/SidebarAdmin";
 
 const AddProduct = () => {
   const [product_name, setProduct_name] = useState("");
@@ -17,7 +19,7 @@ const AddProduct = () => {
     setImage(file);
 
     if (file) {
-      setPreviewImage(URL.createObjectURL(file)); // ✅ Create preview URL
+      setPreviewImage(URL.createObjectURL(file)); //  url of img
     } else {
       setPreviewImage(null);
     }
@@ -53,10 +55,14 @@ const AddProduct = () => {
     }
   };
 
-  return (
-    <div className="min-h-screen flex bg-gray-50">
-      <main className="flex-1 p-10">
-        <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 border border-gray-200">
+  return (<>
+      <AdminNavbar/>
+    <div className="h-full  flex bg-gray-50">
+      {/* <SidebarAdmin/> */}
+      <main className="flex-1 gap-6" >
+        
+      
+        <div className="max-w-md mx-auto bg-white mt-6 shadow-md rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Create Product
           </h2>
@@ -123,6 +129,8 @@ const AddProduct = () => {
                 <option value="68f8ec0f791b73aebb80ac37">Accessories</option>
                 <option value="68f8ee44791b73aebb80ac6a">Shoes</option>
                 <option value="68fa01e575cfd5dfea2d4a3b">Protection</option>
+                <option value="6906ff8737c7b00a1fc6e0bc">Bags</option>
+
               </select>
             </div>
 
@@ -138,7 +146,7 @@ const AddProduct = () => {
                 className="w-full text-gray-700"
               />
 
-              {/* ✅ Preview */}
+              {/*  Preview */}
               {previewImage && (
                 <div className="mt-4">
                   <p className="text-gray-600 text-sm mb-2">Image Preview:</p>
@@ -172,6 +180,7 @@ const AddProduct = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 

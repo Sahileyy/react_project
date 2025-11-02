@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../../axios";
+import { SidebarAdmin } from "../../../components/sidebars/SidebarAdmin";
 
 const AdminPutProduct = () => {
   const { id } = useParams();
@@ -92,6 +93,8 @@ const AdminPutProduct = () => {
   };
 
   return (
+    <>
+    
     <div className="min-h-screen flex bg-gray-50">
       <main className="flex-1 p-10">
         <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 border border-gray-200">
@@ -125,7 +128,7 @@ const AdminPutProduct = () => {
                 value={product.price}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#98b880]"
-              />
+                />
             </div>
 
             {/* Description */}
@@ -161,7 +164,7 @@ const AdminPutProduct = () => {
               </select>
             </div>
 
-            {/* Image + Preview */}
+          
             <div>
               <label className="block text-gray-700 font-medium mb-1">
                 Product Image
@@ -184,13 +187,14 @@ const AdminPutProduct = () => {
             <button
               type="submit"
               className="w-full py-2 bg-[#98b880] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
-            >
+              >
               Update Product
             </button>
           </form>
         </div>
       </main>
     </div>
+              </>
   );
 };
 

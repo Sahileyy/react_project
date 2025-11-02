@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../axios";
+import { SidebarAdmin } from "../../components/sidebars/SidebarAdmin";
 
 export const EditCategory = () => {
   const { id } = useParams();
@@ -41,25 +42,9 @@ export const EditCategory = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
-      <aside className="w-64 bg-[#7a7a7a] text-white flex flex-col p-6">
-        <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
-        <nav className="flex flex-col space-y-3">
-          <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Category
-          </button>
-          <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Product
-          </button>
-          <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Users
-          </button>
-          <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Orders
-          </button>
-        </nav>
-      </aside>
 
+    <div className="min-h-screen flex bg-gray-50">
+    <SidebarAdmin/>
       <main className="flex-1 p-10">
         <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 border border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
@@ -100,6 +85,8 @@ export const EditCategory = () => {
             </button>
           </form>
         </div>
+        <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline transition-transform duration-300 hover:scale-105" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
+
       </main>
     </div>
   );

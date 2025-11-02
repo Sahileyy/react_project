@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../../../axios.jsx";
-import Navbar from "../../../components/navbar";
+import Navbar from "../../../components/Navbar.jsx";
 
 const ProductByCategory = () => {
   const { id } = useParams(); 
@@ -56,7 +56,8 @@ const ProductByCategory = () => {
             <div
               key={p._id}
               onClick={()=>{navigate(`/product/${p._id}`)}}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105 p-6 flex flex-col items-center text-center"
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl 
+              transition-transform duration-300 hover:scale-105 p-6 flex flex-col items-center text-center"
             >
               <img
                 src={"http://localhost:3030"+p.image}

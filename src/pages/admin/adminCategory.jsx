@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../axios";
+import { AdminNavbar } from "../../components/navbar/AdminNavbar";
+import { SidebarAdmin } from "../../components/sidebars/SidebarAdmin";
 
 export const AdminCategory = () => {
   const {id} = useParams
@@ -34,15 +36,22 @@ export const AdminCategory = () => {
   };
 
   return (
+  <>
+        <AdminNavbar/>
+      <div className="flex">
+      <div className="flex">
+        
+      <SidebarAdmin/>
+      </div>
     <div className="p-6 font-sans bg-white w-full h-screen">
       <h2 className="text-2xl  mb-4 text-gray-800 font-bold text-center ">CATEGORIES</h2>
 
       {/* <button
         onClick={() => navigate("/admin/addcategory")}
         className="mb-4 px-4 py-2 bg-[#98b880] text-white rounded hover:bg-green-700 transition-colors"
-      >
+        >
         + Add Category
-      </button> */}
+        </button> */}
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border border-gray-200">
@@ -58,8 +67,8 @@ export const AdminCategory = () => {
             {category.length > 0 ? (
               category.map((cat, index) => (
                 <tr
-                  key={cat._id}
-                  className="hover:bg-gray-100 transition-colors text-gray-700"
+                key={cat._id}
+                className="hover:bg-gray-100 transition-colors text-gray-700"
                 >
                   <td className="p-2 border">{index + 1}</td>
                   <td className="p-2 border">{cat.name}</td>
@@ -68,13 +77,13 @@ export const AdminCategory = () => {
                     <button
                       onClick={() => navigate(`/admin/putCategory/${cat._id}`)}
                       className="px-2 py-1 bg-[#98b880] text-white rounded hover:bg-green-700 transition-colors"
-                    >
+                      >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(cat._id)}
                       className="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-800 transition-colors"
-                    >
+                      >
                       Delete
                     </button>
                   </td>
@@ -85,7 +94,7 @@ export const AdminCategory = () => {
                 <td
                   colSpan="4"
                   className="text-center p-4 text-gray-500"
-                >
+                  >
                   No categories found
                 </td>
               </tr>
@@ -96,6 +105,8 @@ export const AdminCategory = () => {
         <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline transition-transform duration-300 hover:scale-105" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
       
     </div>
+            </div>
+                  </>
   );
 };
 

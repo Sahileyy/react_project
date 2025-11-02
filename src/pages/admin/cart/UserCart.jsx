@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../axios";
-import Navbar from "../../../components/navbar";
+import Navbar from "../../../components/Navbar.jsx";
 import { useNavigate } from "react-router-dom";
 
 const UserCart = () => {
@@ -26,24 +26,35 @@ const UserCart = () => {
   }, []);
 
 
-  const updateQuantity = (productId, delta) => {
-    setCart((prevCart) => {
-      const updatedItems = prevCart.items.map((item) => {
-        if (item.productId._id === productId) {
-          const newQty = Math.max(1, item.quantity + delta);
-          return { ...item, quantity: newQty };
-        }
-        return item;
-      });
-
-      const newTotal = updatedItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
-
-      return { ...prevCart, items: updatedItems, totalAmount: newTotal };
+const updateQuantity = async (productId, delta) => {
+  // Optimistic update
+  setCart(prevCart => {
+    const updatedItems = prevCart.items.map(item => {
+      if (item.productId._id === productId) {
+        const newQty = Math.max(1, item.quantity + delta);
+        return { ...item, quantity: newQty };
+      }
+      return item;
     });
-  };
+    const newTotal = updatedItems.reduce(
+      (sum, item) => sum + item.quantity * item.price,
+      0
+    );
+    return { ...prevCart, items: updatedItems, totalAmount: newTotal };
+  });
+
+  // Sync with backend
+  try {
+    const res = await api.put(`/user/cart/update/${cart._id}`, {
+      productId,
+      update: delta > 0 ? "increment" : "decrement",
+    });
+    setCart(res.data.cart); // replace with real data from backend
+  } catch (err) {
+    console.error("Error updating quantity:", err);
+  }
+};
+
 
   if (loading) {
     return (

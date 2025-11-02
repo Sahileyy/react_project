@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import api from '../../../axios';
 import './listUsers.css'
 import { useNavigate } from 'react-router-dom';
+import { AdminNavbar } from '../../../components/navbar/AdminNavbar';
+import { SidebarAdmin } from '../../../components/sidebars/SidebarAdmin';
 
 
 
@@ -45,7 +47,15 @@ export const ListUsers = () => {
     },[])
 
      return (
-    <div className="user-list  bg-white h-screen">
+      <>
+      
+            <AdminNavbar/>
+       <div className='flex'>
+      <div className="flex">
+
+            <SidebarAdmin/>
+      </div>
+    <div className="user-list w-full  bg-white h-screen">
       <h1 className="admin-title">User List</h1>
       <table className="user-table">
         <thead>
@@ -84,6 +94,8 @@ export const ListUsers = () => {
         <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline transition-transform duration-300 hover:scale-105" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
       
     </div>
+  </div>
+  </>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../axios";
 import { useNavigate } from "react-router-dom";
+import { AdminNavbar } from "../../../components/navbar/AdminNavbar";
 
 
 
@@ -42,7 +43,9 @@ const AdminOrders = () => {
   return (
     <>
      
+             <AdminNavbar/>
       <div className="min-h-screen bg-gray-50 px-6 md:px-20 py-10">
+       
         <h1 className="text-3xl font-bold text-gray-800 mb-8">Manage Orders</h1>
 
         {orders.length === 0 ? (

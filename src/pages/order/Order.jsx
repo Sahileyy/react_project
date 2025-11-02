@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../axios"
-import Navbar from "../../components/navbar";
+import Navbar from "../../components/Navbar.jsx";
 import { useNavigate } from "react-router-dom";
 
 const OrderPage = () => {

@@ -1,31 +1,28 @@
 import React from "react"; 
 import {  useNavigate } from "react-router-dom";
+import { SidebarAdmin } from "../../components/sidebars/SidebarAdmin";
 
 
 const AdminDashboard = () => {
 
   const Navigate = useNavigate();
+  const handleLogoutAdmin = () =>{
+    localStorage.removeItem('user')
+    Navigate('/admin/login')
+  }
 
   return (
+    
     <div className="min-h-screen bg-[#f9f9f9] flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-[#98b880] text-white flex flex-col p-4">
-        <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
-        <nav className="flex flex-col space-y-3">
-          <button className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition-transform duration-300 hover:scale-105 font-bold" onClick={()=> Navigate ('/admin/category')}>
-             Manage Category
-          </button>
-          <button onClick={()=> Navigate('/admin/adminProduct')} className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition-transform duration-300 hover:scale-105 font-bold">
-             Manage Product
-          </button>
-          <button onClick={()=>{Navigate('/admin/adminPannel')}} className="text-left hover:bg-white hover:text-[#000000] p-2 rounded transition-transform duration-300 hover:scale-105 font-bold">
-             Manage Users
-          </button>
-        </nav>
-      </aside>
+    <SidebarAdmin/>  
 
       {/* Main Content */}
       <main className="flex-1 p-14 ">
+         <div className="font-semibold flex-1 hover:underline hover:text-red-700 text-end mt-10">
+           <p onClick={handleLogoutAdmin}>
+             LOGOUT
+           </p>
+          </div>
         <h1 className="text-3xl font-bold text-[#000000] mb-6">
           Welcome, Admin
         </h1>
@@ -63,6 +60,7 @@ const AdminDashboard = () => {
             </p>
           </div>
         </div>
+         
       </main>
     </div>
   );

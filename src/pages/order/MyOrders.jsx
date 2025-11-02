@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../axios";
-import Navbar from "../../components/navbar";
+import Navbar from "../../components/Navbar.jsx";
 import { useNavigate } from "react-router-dom";
 
 const MyOrders = () => {
@@ -22,7 +22,7 @@ const MyOrders = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="min-h-screen bg-gray-50 px-6 md:px-20 py-10">
         <div className="inline-block font-bold w-full ">
         

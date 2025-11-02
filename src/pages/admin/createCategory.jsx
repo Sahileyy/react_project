@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../axios";
+import { AdminNavbar } from "../../components/navbar/AdminNavbar";
+import { SidebarAdmin } from "../../components/sidebars/SidebarAdmin";
 
 export const CreateCategory = () => {
   const [name, setName] = useState("");
@@ -26,27 +28,30 @@ export const CreateCategory = () => {
   };
 
   return (
+    <> 
+    <AdminNavbar/>
     <div className="min-h-screen flex bg-gray-50">
+      <SidebarAdmin/>
     
       {/* <aside className="w-64 bg-[#7a7a7a] text-white flex flex-col p-6">
         <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
         <nav className="flex flex-col space-y-3">
-          <button
-            onClick={() => navigate("/admin/category")}
-            className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold"
-          >
-            Manage Category
-          </button>
+        <button
+        onClick={() => navigate("/admin/category")}
+        className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold"
+        >
+        Manage Category
+        </button>
+        <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
+        Manage Product
+        </button>
+        <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
+        Manage Users
+        </button>
           <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Product
+          Manage Orders
           </button>
-          <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Users
-          </button>
-          <button className="text-left hover:bg-white hover:text-[#98b880] p-2 rounded transition font-bold">
-            Manage Orders
-          </button>
-        </nav>
+          </nav>
       </aside> */}
 
       
@@ -67,7 +72,7 @@ export const CreateCategory = () => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter category name"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#98b880]"
-              />
+                />
             </div>
 
             <div>
@@ -85,7 +90,7 @@ export const CreateCategory = () => {
             <button
               type="submit"
               className="w-full py-2 bg-[#98b880] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
-            >
+              >
               Add Category
             </button>
           </form>
@@ -94,6 +99,7 @@ export const CreateCategory = () => {
 
       </main>
     </div>
+              </>
   );
 };
 
