@@ -19,9 +19,10 @@ import OrderPage from "./pages/order/Order";
 import MyOrders from "./pages/order/MyOrders";
 import AdminOrders from "./pages/admin/adminOrder/ManageOrder";
 import ProtectedRoute from "./services/ProtectedRoute";
-
 const App = () => {
   return (
+    // <UserProvider>
+
     <div>
       <BrowserRouter>
         <Routes>
@@ -53,7 +54,7 @@ const App = () => {
             element={<ProtectedRoute element={MyOrders} allowedRoles={["user"]} />}
           />
 
-          {/* ADMIN Protected Routes */}
+          {/* ADMIN PRotected Routes */}
          <Route
             path="/admin"
             element={<ProtectedRoute element={AdminDashboard} allowedRoles={['admin']} />}
@@ -94,6 +95,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </div>
+      // </UserProvider>
   );
 };
 

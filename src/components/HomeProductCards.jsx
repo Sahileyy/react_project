@@ -4,20 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const ProductCards = ({ products }) => {
   const navigate = useNavigate();
-  // const [product, setProduct] = useState([]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await api.get(`/public/product`);
-  //       console.log(response.data);
-  //       setProduct(response.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   fetchData();
-  // },[]);
 
   return (
     <section className="w-full bg-gray-50 py- px-6 md:px-12 lg:px-20">

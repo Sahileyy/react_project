@@ -31,7 +31,7 @@ const MyOrders = () => {
         </div>
         {orders.length === 0 ? (
           <div className="text-center text-gray-600 text-lg">
-            You haven’t placed any orders yet.
+            You haven’t placed any orders yet..
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

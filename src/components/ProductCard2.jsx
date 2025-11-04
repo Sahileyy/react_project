@@ -1,32 +1,37 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard2 = ({ products = [] }) => {
+const ProductCard2 = ({ products }) => {
   const navigate = useNavigate();
-
-  // show first 6 products initially
   const [visibleCount, setVisibleCount] = useState(6);
+  
 
-  // get products up to visibleCount
-  const displayedProducts = products.slice(0, visibleCount);
-
-  // handle button click
+  const displayedProducts = products.slice(3, visibleCount);
+  
   const handleShowMore = () => {
-    setVisibleCount((prev) => prev + 6);
+    setVisibleCount((prev) => prev + 4);
+  };
+
+ 
+  const handleProductClick = (productId) => {
+    const user = localStorage.getItem("user");
+    
+    if (!user) {
+      alert("Please login to view product details");
+      navigate('/login');
+    } else {
+      navigate(`/product/${productId}`);
+    }
   };
 
   return (
     <section className="w-full bg-gray-50 py-6 px-6 md:px-12 lg:px-20">
-      <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
-        All Products
-      </h2>
-
-      {/* Product Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {displayedProducts.map((product) => (
           <div
             key={product._id}
-            onClick={() => navigate(`/product/${product._id}`)}
+            onClick={() => handleProductClick(product._id)}
             className="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 flex flex-col items-center transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             <img
@@ -47,15 +52,14 @@ const ProductCard2 = ({ products = [] }) => {
         ))}
       </div>
 
-      {/* Show More Button */}
       {visibleCount < products.length && (
         <div className="flex justify-center mt-8">
-          <button
+          <p
             onClick={handleShowMore}
-            className="text-blue-500 font-semibold hover:underline hover:text-blue-700"
+            className="text-blue-500 cursor-pointer hover:underline hover:text-blue-700 font-semibold"
           >
             Show More
-          </button>
+          </p>
         </div>
       )}
     </section>

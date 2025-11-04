@@ -35,7 +35,8 @@ export const ListUsers = () => {
         async function fetchUsers() {
             try{
                 const response =  await api.get('/admin/adminPannel')
-                setUsers(response.data)
+                const nonAdminUsers = response.data.filter(user => user.role !== 'admin')
+                setUsers(nonAdminUsers)
             }
             catch(err){
                 console.log(err);

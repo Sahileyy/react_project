@@ -11,7 +11,7 @@ export const AdminCategory = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchCategorie() {
       try {
         const response = await api.get("/admin/category");
         setCategory(response.data);
@@ -19,21 +19,26 @@ export const AdminCategory = () => {
         console.log("Error fetching categories:");
       }
     }
-    fetchData();
+    fetchCategorie();
   }, [refresh]);
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this category?"))
-      return;
+  const handleDeleteCategory = async (categoryId) => {
+  try {
+    const res = await api.delete(`/admin/category/${categoryId}`);
+    alert(res.data.message || "Category deleted successfully");
 
-    try {
-      const res = await api.delete(`/admin/category/${id}`);
-      alert(res.data.message);
-       setRefresh(true);
-    } catch (error) {
-      console.log("Delete error:");
+    // ✅ Instantly update state so no reload needed
+    setCategory((prev) => prev.filter((cat) => cat._id !== categoryId));
+  } catch (err) {
+    if (err.response?.status === 400) {
+      alert(err.response.data.message || "Cannot delete category that has products.");
+    } else {
+      console.error(err);
+      alert("Error deleting category");
     }
-  };
+  }
+};
+
 
   return (
   <>
@@ -81,7 +86,7 @@ export const AdminCategory = () => {
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDelete(cat._id)}
+                      onClick={() => handleDeleteCategory(cat._id)}
                       className="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-800 transition-colors"
                       >
                       Delete

@@ -22,36 +22,60 @@ const [message,setMessage] = useState('')
 const handleChange  = e =>{
   setform({...form,[e.target.name]: e.target.value})
 }
-
-
-const handleSubmit = async e =>{
+const handleSubmit = async e => {
   e.preventDefault();
 
-  try{
-    const res = await api.post(apiEndPoint,form )
-   console.log("login response:",res.data);
+  try {
+    const res = await api.post(apiEndPoint, form);
+    console.log("login response:", res.data);
 
-   if(res.data && res.data.user){
-    localStorage.setItem("user",JSON.stringify(res.data.user))
-    setMessage(res.data.message)
+    //  blocked user 
+    if (res.data.message === "Admin blocked you") {
+      alert("Your account has been blocked by the admin. Please contact support.");
+      setMessage("Your account has been blocked");
+      return;
+    }
 
-    if (res.data.user.role === "admin"){
-      navigate('/admin')
-    }
-    if(res.data.user.role === "user"){
-      navigate('/')
-    }
-    else{
-      setMessage(res.data.message || "login failed")
-    }
-   }
    
-   
-  }
-  catch(err){
-    setMessage(err.response?.data || 'LOGIN FAILED')
+    if (res.data.message === "Invalid username") {
+      alert("Invalid username");
+      setMessage("Invalid username");
+      return;
+    }
+
+    if (res.data.message === "Invalid password") {
+      alert("Invalid password");
+      setMessage("Invalid password");
+      return;
+    }
+
+    if (res.data.message === "Not authorized as user") {
+      alert("Not authorized as user");
+      setMessage("Not authorized");
+      return;
+    }
+
+    // Success 
+    if (res.data && res.data.user) {
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setMessage(res.data.message);
+
+      if (res.data.user.role === "admin") {
+        navigate('/admin');
+      } else if (res.data.user.role === "user") {
+        navigate('/');
+      }
+    } else {
+      setMessage(res.data.message || "login failed");
+    }
+
+  } catch (err) {
+    alert("Login failed. Please try again.");
+    setMessage(err.response?.data || 'LOGIN FAILED');
   }
 }
+
+
 
   return (
     <div className="login-container">
