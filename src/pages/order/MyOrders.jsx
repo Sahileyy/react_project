@@ -26,7 +26,7 @@ const MyOrders = () => {
       <div className="min-h-screen bg-gray-50 px-6 md:px-20 py-10">
         <div className="inline-block font-bold w-full ">
         
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 pt-5">My Orders</h1>
+        <h1 className="pt-15 text-3xl font-bold text-gray-800 mb-8">My Orders</h1>
        
         </div>
         {orders.length === 0 ? (

@@ -19,6 +19,7 @@ import OrderPage from "./pages/order/Order";
 import MyOrders from "./pages/order/MyOrders";
 import AdminOrders from "./pages/admin/adminOrder/ManageOrder";
 import ProtectedRoute from "./services/ProtectedRoute";
+import SearchResults from "./components/SearchResults";
 const App = () => {
   return (
     // <UserProvider>
@@ -33,7 +34,7 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/public/product/category/:id" element={<ProductByCategory />} />
           {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
-
+          <Route path="/search/:query" element={<SearchResults />} />
           {/* USER Protected Routes */}
           <Route
             path="/product/:id"

@@ -15,7 +15,7 @@ const UserCart = () => {
       try {
         const res = await api.get("/user/cart/view");
         setCart(res.data);
-        setCartCount(res.data.items.length); // ✅ cart count (not product count)
+        setCartCount(res.data.items.length);
       } catch (err) {
         console.error("Error fetching cart:", err);
       } finally {
@@ -98,7 +98,7 @@ const UserCart = () => {
     return (
       <>
         <Navbar cartCount={cartCount} />
-        <div className="min-h-screen flex flex-col items-center justify-center text-gray-600">
+        <div className=" min-h-screen flex flex-col items-center justify-center text-gray-600">
           <h2 className="text-3xl font-semibold mb-4">Your Cart is Empty</h2>
           <p className="text-gray-500 mb-8">Looks like you haven’t added anything yet.</p>
           <a
@@ -116,7 +116,7 @@ const UserCart = () => {
     <>
       <Navbar cartCount={cartCount} />
       <div className="min-h-screen bg-gray-50 px-6 md:px-16 py-12">
-        <h1 className="text-3xl font-bold text-gray-800 mb-10 text-center">
+        <h1 className=" pt-20 text-3xl font-bold text-gray-800 mb-10 text-center">
           Your Shopping Cart
         </h1>
            <button
