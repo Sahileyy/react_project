@@ -27,7 +27,7 @@ export const AdminCategory = () => {
     const res = await api.delete(`/admin/category/${categoryId}`);
     alert(res.data.message || "Category deleted successfully");
 
-    // ✅ Instantly update state so no reload needed
+    // Instantly update 
     setCategory((prev) => prev.filter((cat) => cat._id !== categoryId));
   } catch (err) {
     if (err.response?.status === 400) {
