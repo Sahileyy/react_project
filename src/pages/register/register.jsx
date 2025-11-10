@@ -68,6 +68,9 @@ if(res.data === 'REGISTERED SUCCESSFULLY'){
           <button type="submit">Register</button>
           <p className="text-red-600 font-light text-center text-xs italic">{message}</p>
         </form>
+        <div className="home-link">
+          <a href="/">← Back to Home</a>
+        </div>
       </div>
     </div>
   );
