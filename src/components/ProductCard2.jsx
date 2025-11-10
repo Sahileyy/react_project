@@ -101,7 +101,7 @@ const ProductCard2 = ({ products }) => {
             className="bg-white rounded-2xl shadow-md hover:shadow-xl p-5 flex flex-col items-center transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             <img
-              src={`http://13.201.21.101/api${product.image}`}
+              src={`https://sahilsports.duckdns.org/api${product.image}`}
               alt={product.product_name}
               className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 object-cover rounded-xl mb-4"
             />

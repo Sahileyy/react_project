@@ -60,7 +60,7 @@ const ProductByCategory = () => {
               transition-transform duration-300 hover:scale-105 p-6 flex flex-col items-center text-center"
             >
               <img
-                src={"http://13.201.21.101/api"+p.image}
+                src={"https://sahilsports.duckdns.org/api"+p.image}
                 alt={p.product_name}
                 className="w-48 h-48 object-cover rounded-xl mb-4"
               />

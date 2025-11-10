@@ -134,7 +134,7 @@ const UserCart = () => {
                 className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-md hover:shadow-lg p-5 transition"
               >
                 <img
-                  src={`http://13.201.21.101/api${item.productId.image}`}
+                  src={`https://sahilsports.duckdns.org/api${item.productId.image}`}
                   alt={item.productId.product_name}
                   className="w-32 h-32 object-cover rounded-xl mb-4 sm:mb-0 sm:mr-6"
                 />

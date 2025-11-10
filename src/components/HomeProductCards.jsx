@@ -62,7 +62,7 @@ const ProductCards = ({ products }) => {
             className="bg-white rounded-2xl shadow-md hover:shadow-xl p-4 sm:p-6 flex flex-col items-center transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             <img
-              src={`http://13.201.21.101/api${product.image}`}
+              src={`https://sahilsports.duckdns.org/api${product.image}`}
               alt={product.product_name}
               onClick={() => {
                 navigate(`/user/product/${product._id}`);

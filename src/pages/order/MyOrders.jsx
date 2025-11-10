@@ -73,7 +73,7 @@ const MyOrders = () => {
                   {order.items.slice(0, 3).map((item) => (
                     <img
                       key={item._id}
-                      src={`http://13.201.21.101/api${item.product_id?.image}`}
+                      src={`https://sahilsports.duckdns.org/api${item.product_id?.image}`}
                       alt={item.product_id?.product_name}
                       className="w-16 h-16 object-cover rounded-lg border"
                     />

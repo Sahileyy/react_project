@@ -96,7 +96,7 @@ const AdminProduct = () => {
                       <td className="p-2 border text-center">
                         {prod.image ? (
                           <img
-                            src={`http://13.201.21.101/api${prod.image}`}
+                            src={`https://sahilsports.duckdns.org/api${prod.image}`}
                             alt={prod.product_name}
                             className="w-16 h-16 object-cover rounded"
                           />

@@ -50,7 +50,7 @@ const SearchResults = () => {
                 className="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-transform hover:scale-105 duration-300 flex flex-col"
               >
                 <img
-                  src={`http://13.201.21.101/api${product.image}`}
+                  src={`https://sahilsports.duckdns.org/api${product.image}`}
                   alt={product.product_name}
                   className="w-full h-48 sm:h-56 object-cover rounded-lg mb-4"
                 />

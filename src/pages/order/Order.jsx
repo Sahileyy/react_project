@@ -65,7 +65,7 @@ const OrderPage = () => {
                 >
                   <div className="flex items-center gap-4">
                     <img
-                      src={`http://13.201.21.101/api${item.productId.image}`}
+                      src={`https://sahilsports.duckdns.org/api${item.productId.image}`}
                       alt={item.productId.product_name}
                       className="w-20 h-20 object-cover rounded-lg border"
                     />
