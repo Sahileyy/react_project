@@ -192,6 +192,7 @@ const AdminPutProduct = () => {
             </button>
           </form>
         </div>
+          <div className="text-center font-bold py-6"><p className="text-lg cursor-pointer hover:underline transition-transform duration-300 hover:scale-105" onClick={()=>{navigate('/admin')}}>Back to Dashboard</p></div>
       </main>
     </div>
               </>
