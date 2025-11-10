@@ -84,7 +84,7 @@ const ProductCard2 = ({ products }) => {
     const user = localStorage.getItem("user");
     if (!user) {
       alert("Please login to view product details");
-      navigate("/login");
+      navigate("user/login");
     } else {
       navigate(`/product/${productId}`);
     }

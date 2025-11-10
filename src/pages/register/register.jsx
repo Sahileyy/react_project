@@ -27,7 +27,7 @@ const handleChange = e =>{
 const handleSubmit = async e =>{
   e.preventDefault();
   try{
-    const res = await axios.post('http://localhost:3030/user/register',form);
+    const res = await axios.post('http://13.201.21.101/api/user/register',form);
     setMessage(res.data)
     // console.log(res.data);
     
