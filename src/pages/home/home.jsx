@@ -189,7 +189,8 @@ const HomePage = () => {
     async function fetchProducts() {
       try {
         const res = await api.get("/public/product");
-        setProducts(res.data);
+      console.log("Fetched data from backend:", res.data);
+      setProducts(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         console.log("error fetching products", err);
       }
