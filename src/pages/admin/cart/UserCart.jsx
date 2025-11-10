@@ -25,7 +25,7 @@ const UserCart = () => {
     fetchCart();
   }, []);
 
-  // ✅ Update quantity
+  // Update quantity
   const updateQuantity = async (productId, delta) => {
     setCart((prevCart) => {
       const updatedItems = prevCart.items.map((item) => {
@@ -81,7 +81,7 @@ const UserCart = () => {
 
         setCartCount((prev) => prev - 1);
     } catch (err) { 
-        console.error("❌ Error deleting item:", err.response?.data || err);
+        console.error("Error deleting item:", err.response?.data || err);
         alert("Error deleting item. Please try again.");
     }
 };
@@ -134,7 +134,7 @@ const UserCart = () => {
                 className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-md hover:shadow-lg p-5 transition"
               >
                 <img
-                  src={`http://localhost:3030${item.productId.image}`}
+                  src={`http://13.201.21.101/api${item.productId.image}`}
                   alt={item.productId.product_name}
                   className="w-32 h-32 object-cover rounded-xl mb-4 sm:mb-0 sm:mr-6"
                 />

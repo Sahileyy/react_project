@@ -34,7 +34,7 @@ const ProductDetails = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    addToCart(product._id,1); // ✅ Updates global cart count
+    addToCart(product._id,1); //  Updates global cart count
 
     // Save product in localStorage
     const existing = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -60,7 +60,7 @@ const ProductDetails = () => {
         <div className="bg-white rounded-2xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-10 p-8">
           <div className="flex flex-col gap-4 items-center">
             <img
-              src={`http://localhost:3030${product.image}`}
+              src={`http://13.201.21.101/api${product.image}`}
               alt={product.product_name}
               className="w-full max-w-md h-[400px] object-cover rounded-xl border border-gray-200"
             />

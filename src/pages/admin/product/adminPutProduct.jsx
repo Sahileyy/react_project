@@ -36,7 +36,7 @@ const AdminPutProduct = () => {
         });
 
         // set current image preview
-        setPreview(prod.image ? `http://localhost:3030${prod.image}` : "");
+        setPreview(prod.image ? `http://13.201.21.101/api${prod.image}` : "");
 
         // fetch category list
         const catRes = await api.get("/admin/category");

@@ -97,7 +97,6 @@ import { useCart } from "../components/UserContext";
 const Navbar = () => {
   const navigate = useNavigate();
   const { cartCount } = useCart();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearchPopup, setShowSearchPopup] = useState(false);
   const isLoggedIn = localStorage.getItem("user");
@@ -122,7 +121,6 @@ const Navbar = () => {
     e.preventDefault();
     if (searchQuery.trim() !== "") {
       navigate(`/search/${encodeURIComponent(searchQuery.trim())}`);
-      setMenuOpen(false);
       setShowSearchPopup(false);
       setSearchQuery("");
     }
@@ -161,7 +159,7 @@ const Navbar = () => {
             </button>
           </form>
 
-          {/* Right Icons */}
+          {/* Right Side Icons */}
           <div className="flex items-center gap-4 md:gap-6">
             {/* Mobile Search Icon */}
             <button
@@ -169,11 +167,7 @@ const Navbar = () => {
               aria-label="Search"
               onClick={() => setShowSearchPopup(true)}
             >
-              <img
-                src={search}
-                alt="Search"
-                className="w-5 h-5 transition-transform duration-300 hover:rotate-12"
-              />
+              <img src={search} alt="Search" className="w-5 h-5" />
             </button>
 
             {/* Cart */}
@@ -183,7 +177,7 @@ const Navbar = () => {
             >
               <img src={cart} alt="Cart" className="w-6" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -197,44 +191,36 @@ const Navbar = () => {
               onClick={handlePersonClick}
             />
 
-            {/* Logout Button (Desktop Only) */}
+            {/* Logout Button (responsive) */}
             {isLoggedIn && (
-              <button
-                onClick={handleLogout}
-                className="hidden md:inline-block bg-gradient-to-r from-red-500 to-red-600 hover:opacity-90 text-white text-sm font-medium px-4 py-1 rounded-full transition-all duration-200 shadow-md"
-              >
-                Logout
-              </button>
-            )}
+              <>
+                {/* Desktop Logout */}
+                <button
+                  onClick={handleLogout}
+                  className="hidden md:inline-block bg-gradient-to-r from-red-500 to-red-600 hover:opacity-90 text-white font-medium px-4 py-1 rounded-full transition-all duration-200 shadow-md text-sm md:text-base lg:text-lg"
+                >
+                  Logout
+                </button>
 
-            {/* Hamburger Menu (Mobile Only) */}
-            <button
-              className="md:hidden p-2 rounded hover:bg-gray-100"
-              aria-label="Menu"
-              onClick={() => setMenuOpen((s) => !s)}
-            >
-              <span className="block w-5 h-[2px] bg-black mb-1" />
-              <span className="block w-5 h-[2px] bg-black mb-1" />
-              <span className="block w-5 h-[2px] bg-black" />
-            </button>
+                {/* Mobile Logout */}
+                <button
+                  onClick={handleLogout}
+                  className="md:hidden bg-gradient-to-r from-red-500 to-red-600 hover:opacity-90 text-white text-xs font-medium px-3 py-1 rounded-full transition-all duration-200 shadow-md"
+                >
+                  Logout
+                </button>
+              </>
+            )}
           </div>
         </div>
-
-        {/* Mobile Dropdown */}
-        <div
-          className={`md:hidden px-4 pb-2 transition-[max-height] duration-300 overflow-hidden ${
-            menuOpen ? "max-h-32" : "max-h-0"
-          }`}
-        />
       </nav>
 
-      {/* ✅ Responsive Search Popup */}
+      {/* Search Popup (Mobile) */}
       {showSearchPopup && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-end md:items-center justify-center z-[999]"
           onClick={() => setShowSearchPopup(false)}
         >
-          {/* Mobile = bottom sheet | Desktop = centered box */}
           <div
             className="bg-white w-full md:w-[90%] md:max-w-sm rounded-t-2xl md:rounded-2xl shadow-2xl p-6 animate-popupIn transform translate-y-0"
             onClick={(e) => e.stopPropagation()}
