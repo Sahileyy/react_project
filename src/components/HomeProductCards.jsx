@@ -53,7 +53,7 @@ const ProductCards = ({ products }) => {
   return (
     <section className="w-full bg-gray-50 py-10 px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10">
-        {products.slice(0, 3).map((product) => (
+        {Array.isArray(products)&&products.slice(0, 3).map((product) => (
           <div
             key={product._id}
             onClick={() => {

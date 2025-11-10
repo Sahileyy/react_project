@@ -93,7 +93,8 @@ const ProductCard2 = ({ products }) => {
   return (
     <section className="w-full bg-gray-50 py-10 px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {displayedProducts.map((product) => (
+        {Array.isArray(displayedProducts)&& 
+        displayedProducts.map((product) => (
           <div
             key={product._id}
             onClick={() => handleProductClick(product._id)}
