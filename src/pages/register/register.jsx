@@ -81,7 +81,7 @@ import React, { useState } from 'react';
 import './register.css';
 import logo from '../../assets/logo.png'; 
 import { useNavigate } from 'react-router-dom';
-import api from '../../axios.js';
+import api from '../../axios';
 
 const Register = () => {
 
